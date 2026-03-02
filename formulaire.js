@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 document.querySelector("#form input[type=submit]").addEventListener("click", (event) => {
     document.querySelectorAll("#form div.error").forEach((div) => {
         div.classList.remove("error");
@@ -22,3 +23,8 @@ document.querySelector("#form input[type=submit]").addEventListener("click", (ev
         console.log("Oups!");
     }
 });
+=======
+document.querySelector("#form input[type=submit]").addEventListener("click", () => {
+    
+});
+>>>>>>> 0ad8da9 (feat(docs) : add js curses)
