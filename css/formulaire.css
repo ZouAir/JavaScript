@@ -1,0 +1,69 @@
+body {
+    background-color: rgb(82, 128, 128);
+}
+
+header {
+border-bottom: 1px solid ;
+}
+
+footer {
+border-top: 1px solid;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+h1 {
+    margin-left:130px ;
+}
+
+form {
+    background-color: rgb(21, 54, 54);
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+form span {
+    color: white;
+    margin-left: 20px;
+}
+
+.form-bloc {
+    margin: 10px;
+    padding: 10px;
+    
+}
+
+.error label {
+    color: red;
+    font-weight: bold;
+}
+
+.error input, .error textarea, .error select {
+    border-color: red;
+}
+
+.error-message {
+    display: none;
+}
+
+.error .error-message {
+    color : red;
+    display: block;
+}
+
+label {
+    margin-right: 75px;
+    color: white;
+    width: 120px;
+}
+
+.footer {
+    display: flex;
+}
+
+.footer-bloc {
+    display: block;
+}

@@ -3,6 +3,8 @@ const submitButton = form.querySelector("input[type = submit]")
 
 submitButton.addEventListener("click", (event) => {
     let error = false;
+    let errors = {}; //On crée un tableau pour récapiltuler toutes les erreurs. 
+    //les tableaux en JS sont des objets et sont donc entre {} contrairement à [] en PHP.
 
     form.querySelectorAll(".form-group.error").forEach((elt) => {
         elt.classList.remove("error");
@@ -15,14 +17,14 @@ submitButton.addEventListener("click", (event) => {
             error = true;
             input.closest(".form-group").classList.add("error");
             const msg = document.createElement("div");
-            const text = document.createTextNode("Champ obligatoire");
+            const text = document.createTextNode("Champ obligatoire");//TextNode: On rajoute un noeud qui sera un texte.
             msg.append(text);
             msg.classList.add("error-message");
-            input.parentNode.append(msg);
+            input.parentNode.append(msg);//TextNode: On rajoute au noeud parent un msg.
         }
     });
 
-    const mail = document.getElementById("mail");
+    const mail = document.getElementById("mail"); //Pour éviter de reproduire le code 4 fois.
     if (mail.value.trim().length > 0) {
         const regEx = /[a-zA-Z0-9_.\- \+]+@[a-zA-Z0-9.\-]+.[a-zA-Z0-9] {2,}/;
         if (!regEx.test(mail.value)) {
