@@ -22,6 +22,21 @@ html {
     box-sizing: border-box;
 }
 
+.form .form-group.error input,
+.form .form-group.error select,
+.form .form-group.error textarea {
+    border-color: red;
+    box-shadow: 0 0 10px rgba(255, 0, 0, .5);
+}
+
+.form .form-group.error label {
+    color: red;
+}
+
+.form .form-group.error .error-message {
+    color: red;
+}
+
 
 @media (min-width:768px) {
     main .container {
