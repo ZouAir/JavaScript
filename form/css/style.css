@@ -37,6 +37,10 @@ html {
     color: red;
 }
 
+.form .form-group li.success {
+    color: green;
+}
+
 
 @media (min-width:768px) {
     main .container {

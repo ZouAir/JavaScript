@@ -16,7 +16,7 @@ document.getElementById("bouton").addEventListener("click", () => {
 }); 
 
 //Viser un élément.
-h1.innerText = (h1.innerText=="Hello" ? "Salut" : "Hello");
+h1.innerText = (h1.innerText=="Hello" ? "Salam" : "Hello");
 getElementById("titre")
 getElementsByClassname()
 getElementsByTagName()
@@ -34,25 +34,25 @@ document.querySelectorAll(".bouton").forEach((btn) => {
 document.getElementById("btn").addEventListener("click", () => {
     //document.getElementById("list").innerHTML += "<li>lorem</li>";
 
-const li = document.createElement("li");
-const text = document.createTextNode("lorem");
-//Ajouter un id à un élément déjà existant: 
-li.setAttribute("data-id", "toto"); 
-//Ajouter un id à un élément déjà existant:
-li.classList.add("ma-classe");
-li.append(text);  
-document.getElementById("list").appendChild(li);
+    const li = document.createElement("li");
+    const text = document.createTextNode("lorem");
+    //Ajouter un id à un élément déjà existant: 
+    li.setAttribute("data-id", "toto");
+    //Ajouter un id à un élément déjà existant:
+    li.classList.add("ma-classe");
+    li.append(text);
+    document.getElementById("list").appendChild(li);
 });
 
 const tab = ["Bananes", "Pommes", "Poires"];
 let flag = true;
 document.getElementById("btn").addEventListener("click", () => {
     const maxi = tab.length;
-    if (flag==true) {
-        for (let i = 0; i < tab.length; i++){
+    if (flag == true) {
+        for (let i = 0; i < tab.length; i++) {
             // à chaque click
             const li = document.createElement("li");
-            const text = document.createTextNode(nom + (cpt<10 ? "0" : "") + cpt + tab[cpt++],);
+            const text = document.createTextNode(nom + (cpt < 10 ? "0" : "") + cpt + tab[cpt++],);
             li.setAttribute("data-id", "toto");
             li.classList.add("ma-class");
             li.append(text);
@@ -90,11 +90,11 @@ document.querySelectorAll("button.modal-button-open").forEach((button) => {
 
 document.querySelectorAll(".modal-button-close").forEach((button) => {
     button.addEventListener("click", () => {
-/*
-        button.closest(".modal-wrapper")?.classList.remove("modal-show");
-        let id = button.closest(".modal-wrapper").id;
-        document.querySelector("button[aria-controls=" + id + "]").focus();
-*/
+        /*
+                button.closest(".modal-wrapper")?.classList.remove("modal-show");
+                let id = button.closest(".modal-wrapper").id;
+                document.querySelector("button[aria-controls=" + id + "]").focus();
+        */
         let wrapper = button.closest(".modal-wrapper");
         wrapper.classList.remove("modal-show");
         document.querySelector("button[aria-controls=" + wrapper.id + "]").focus();
