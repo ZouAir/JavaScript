@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdn.boxicons.com/3.0.8/fonts/basic/boxicons.min.css" rel="stylesheet">
     <script src="js/script.js" defer></script>
     <title>Mon projet formulaire JS</title>
 </head>
@@ -26,7 +27,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="firstname">Firstname *</label>
+                    <label for="firstname">Firstname <sup>*</sup></label>
                     <div>
                         <input type="text" id="firstname" name="firstname" required>
                     </div>
@@ -41,7 +42,10 @@
                     <label for="pwd">MdP *</label>
                     <div>
                         <input type="password" id="pwd" name="pwd" required>
-                        <button id="pwd-show">Afficher MdP</button>
+                        <button id="pwd-show">
+                            <i class="bx bx-eye" aria-label="Afficher le mot de passe"></i>
+                            <i class="bx bx-eye-slash" aria-label="Masquer le mot de passe"></i>
+                        </button>
                         <!-- <div>
                             <p>Le mot de passe doit respecter les règles suivantes</p>
                             <ul>
@@ -60,7 +64,7 @@
                         <button id="pwd-confirm-show">Afficher MdP</button>
                     </div>
                 </div>
-                <input type="submit" value="OK">
+                <input type="submit" value="Valider">
             </form>
         </section>
     </main>

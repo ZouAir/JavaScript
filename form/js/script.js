@@ -7,6 +7,7 @@ submitButton.addEventListener("click", (event) => {
     //On crée un tableau pour récapiltuler toutes les erreurs.
     //les tableaux en JS sont des objets et sont donc entre {} contrairement à [] en PHP.
 
+    form.querySelector(".form-errors")?.remove(); // "?" si cet élément existe on le supprime sinon on ne fait rien. 
     form.querySelectorAll(".form-group.error").forEach((elt) => {
         elt.classList.remove("error");
         elt.querySelector(".error-message").remove();
@@ -41,9 +42,59 @@ submitButton.addEventListener("click", (event) => {
             mail.parentNode.append(msg);
         }
     }
+
+    if (pwd.value.length > 0) {
+        let errorMessage = "";
+        for (const [id, data] of Object.entries(criterias)) {
+            if (!data.regEx.test(pwd.value)) {
+                error = true;
+                document.getElementById("pwd-criteria-" + id).classList.add("error");
+                pwd.closest(".form-group").classList.add("error");
+                errorMessage = "Mot de passe non conforme";
+            }
+        }
+        if (errorMessage != "") {
+            const div = document.createElement("div");
+            const text = document.createTextNode(errorMessage);
+            div.append(text);
+            div.classList.add("error-message");
+            pwd.parentNode.append(div);
+        }
+
+        const pwdConfirm = document.getElementById("pwd-confirm");
+        if (pwdConfirm.value.length > 0 && errorMessage == "") {
+            if (pwd.value != pwdConfirm.value) {
+                error = true;
+                pwdConfirm.closest(".form-group").classList.add("error");
+                const div = document.createElement("div");
+                const text = document.createTextNode("Mot de passe différent");
+                div.append(text);
+                div.classList.add("error-message");
+                pwdConfirm.parentNode.append(div);
+            }
+        }
+    }
+
     if (error) {
         event.preventDefault();
-        console.log("erreur détectée");
+        // console.log("erreur détectée");
+        const div = document.createElement("div");
+        const p = document.createElement("p");
+        const text = document.createTextNode("Erreurs de saisie : ");
+        p.append(text);
+        div.append(p);
+        const ul = document.createElement("ul");
+        form.querySelectorAll(".form-group.error").forEach((group) => {
+            const li = document.createElement("li");
+            const text = document.createTextNode(group.querySelector("label").innerHTML + " : " + group.querySelector(".error-message").innerHTML);
+            li.append(text);
+            ul.append(li);
+        });
+        div.append(ul);
+        div.setAttribute("tabindex", -1); //tabindex "0" ou "-1" => "-1" visible juste en JS => "0" visible en html et JS.
+        div.classList.add("form-errors");
+        form.prepend(div);
+        div.focus();
     }
 });
 
@@ -123,8 +174,35 @@ pwd.addEventListener("keyup", () => {
     for (const [id, data] of Object.entries(criterias)) {
         if (data["regEx"].test(pwd.value)) {
             document.getElementById("pwd-criteria-" + id).classList.add("success");
+            document.getElementById("pwd-criteria-" + id).classList.remove("error");
         } else {
             document.getElementById("pwd-criteria-" + id).classList.remove("success");
         }
+    }
+});
+
+const pwdShow = document.getElementById("pwd-show");
+pwdShow.addEventListener("click", (event) => {
+    event.preventDefault();
+    const input = document.getElementById("pwd");
+    if (input.type == "password") {
+        input.type = "text";
+        pwdShow.classList.add("pwd-visible");
+    } else {
+        input.type = "password";
+        pwdShow.classList.remove("pwd-visible");
+    }
+});
+
+const pwdConfirmShow = document.getElementById("pwd-confirm-show");
+pwdConfirmShow.addEventListener("click", (event) => {
+    event.preventDefault();
+    const input = document.getElementById("pwd-confirm");
+    if (input.type == "password") {
+        input.type = "text";
+        pwdShow.classList.add("pwd-visible");
+    } else {
+        input.type = "password";
+        pwdShow.classList.remove("pwd-visible");
     }
 });
